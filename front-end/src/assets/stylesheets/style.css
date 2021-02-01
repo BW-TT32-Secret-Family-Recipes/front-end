@@ -114,7 +114,7 @@ strong {
 
 /* Recipe Card */
 .recipe-card {
-  position: fixed;
+  /* position: fixed; */
   margin: 1rem;
 }
 

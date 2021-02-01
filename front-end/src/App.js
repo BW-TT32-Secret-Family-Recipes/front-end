@@ -11,7 +11,7 @@ const App = () => {
       <Nav />
 
       <Route exact path='/' component={Home} />
-      <Route path='/recipes' component={Recipe} />
+      <Route path='/recipes' component={RecipeList} />
 
       {/* 
         <Route path='/login' component={}/>
