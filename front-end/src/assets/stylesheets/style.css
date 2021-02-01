@@ -49,7 +49,6 @@ table {
 }
 
 /* Navigation */
-
 h1 {
   font-size: 2rem;
   color: red;
@@ -84,7 +83,6 @@ a:hover {
 }
 
 /* Home */
-
 .about {
   text-align: center;
 }
@@ -99,4 +97,17 @@ a:hover {
   font-size: 1.1rem;
 }
 
+/* Recipes */
+.recipe-list {
+  text-align: center;
+}
 
+.recipe-list h2 {
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+strong {
+  font-weight: bold;
+}
