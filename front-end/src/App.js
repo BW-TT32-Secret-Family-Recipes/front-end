@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import Nav from './components/Nav'
 import PrivateRoute from './components/PrivateRoute'
 import RecipeList from './components/RecipeList'
+import Recipe from './components/Recipe'
 
 const App = () => {
   return (
