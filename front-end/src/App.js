@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import Nav from './components/Nav'
 import PrivateRoute from './components/PrivateRoute'
 import RecipeList from './components/RecipeList'
+import Recipe from './components/Recipe'
 
 const App = () => {
   return (
@@ -10,7 +11,7 @@ const App = () => {
       <Nav />
 
       <Route exact path='/' component={Home} />
-      <Route path='/recipes' component={RecipeList} />
+      <Route path='/recipes' component={Recipe} />
 
       {/* 
         <Route path='/login' component={}/>
