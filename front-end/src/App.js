@@ -1,15 +1,11 @@
 import Home from './components/Home'
 import { Link, Route } from 'react-router-dom'
+import Nav from './components/Nav'
 
-function App() {
+const App = () => {
   return (
     <>
-      <nav>
-        <Link to='/'> Home</Link>
-        <Link to='/add-recipe'>Add Recipe</Link>
-        <Link to='/login'>Login</Link>
-        <Link to='/new-user'>Sign Up</Link>
-      </nav>
+      <Nav />
 
       <Route path='/' component={Home} />
       {/* <Route path='/login' component={}/>
