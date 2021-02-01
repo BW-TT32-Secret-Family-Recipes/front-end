@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Recipe from './Recipe'
 import recipeData from '../data/recipeData'
+import Search from './Search';
 
 // Need to create a <Recipe /> component
 // Need to map through the data and render a <Recipe /> component for each recipe
@@ -12,6 +13,7 @@ const RecipeList = () => {
 
   return (
     <div className='recipe-list'>
+      <Search/>
       <h2>Recipe List</h2>
 
       {console.log(recipes)}
