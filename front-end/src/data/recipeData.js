@@ -1,5 +1,6 @@
 import frenchToast from '../assets/food_images/french_toast.png'
 import pancakes from '../assets/food_images/pancakes.png'
+import eggsBenedict from '../assets/food_images/eggs_benedict.png'
 
 const recipeData = [
   {
@@ -15,7 +16,15 @@ const recipeData = [
     image: pancakes,
     timeToPrepare: 15,
     servings: 3
+  },
+  {
+    id: 2,
+    name: 'Eggs Benedict',
+    image: eggsBenedict,
+    timeToPrepare: 25,
+    servings: 2
   }
+
 ]
 
 export default recipeData

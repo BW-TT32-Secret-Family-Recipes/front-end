@@ -11,20 +11,22 @@ const RecipeList = () => {
   const [recipes, setRecipes] = useState(recipeData)
 
   return (
-    <div className='recipe-list'>
+    <div className='recipe-container'>
       <h2>Recipe List</h2>
 
-      {console.log(recipes)}
+      <div className='recipe-list'>
+        {recipes.map(recipe => {
+          return (
+            <Recipe
+              key={recipe.id}
+              image={recipe.image}
+              name={recipe.name}
+              timeToPrepare={recipe.timeToPrepare}
+              servings={recipe.servings} />
+          )
+        })}
+      </div>
 
-      {recipes.map(recipe => {
-        return (
-          <Recipe
-            image={recipe.image}
-            name={recipe.name}
-            timeToPrepare={recipe.timeToPrepare}
-            servings={recipe.servings} />
-        )
-      })}
     </div>
   )
 }

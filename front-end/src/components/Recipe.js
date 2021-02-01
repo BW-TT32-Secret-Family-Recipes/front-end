@@ -6,9 +6,9 @@ const Recipe = (props) => {
     <div className='recipe-card'>
       <img src={props.image} />
 
-      {/* <span id='mins'>{props.timeToPrepare} mins</span>
+      {/* <span id='mins'>{props.timeToPrepare} mins</span> */}
 
-      <span id='servings'>{props.servings} servings</span> */}
+      {/* <span id='servings'>{props.servings} servings</span> */}
     </div>
   )
 }
