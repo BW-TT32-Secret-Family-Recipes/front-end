@@ -4,6 +4,7 @@ import Nav from './components/Nav'
 import PrivateRoute from './components/PrivateRoute'
 import RecipeList from './components/RecipeList'
 import Recipe from './components/Recipe'
+import RecipeForm from './components/RecipeForm'
 
 const App = () => {
   return (
