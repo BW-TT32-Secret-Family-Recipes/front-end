@@ -47,26 +47,29 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-/* Navigation */
-h1 {
-  font-size: 2rem;
-  color: red;
-  padding: 1rem;
-  position: absolute;
-  left: 0;
-  font-weight: bold;
+* {
+  box-sizing: border-box;
 }
 
-#title {
-  color: white;
+/* Navigation */
+
+nav img {
+  height: 4.6rem;
+  padding: 0 1.5rem;
+}
+.logo-link {
+  padding: 0;
+  margin: 0;
+}
+.logo-link:hover {
+  background-color: #444444;
 }
 
 nav {
-  background-color: black;
+  background-color: #3a3a3a;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 a {
@@ -79,24 +82,66 @@ a {
 }
 
 a:hover {
-  background-color: red;
+  background-color: #F2A22C;
 }
 
 /* Home */
-.about {
+.home #left-side{
+  width: 30%;
+  height: 100vh;
+  background-image: url('../images/bg.jpg');
+  background-repeat: no-repeat;
+  overflow:hidden; 
+  position:fixed;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  font-size: 16px;
+  box-shadow: #444444 3px 0px 10px;
+  z-index: -1;
+}
+
+.home #content {
+  width: 70%;
+  margin-left: 30%;
   text-align: center;
 }
 
-.about h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 1rem;
+
+.home #why-us {
+  background-image: url('../images/criss-cross.png');
 }
 
-.about p {
-  font-size: 1.1rem;
+.home .why {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+  font-size: 20px;
+  padding: 2% 0;
+  color: #632726;
+  line-height: 1.2;
 }
 
+.home .header-img {
+  width: 50%;
+  padding: 5%;
+}
+.home .why img{
+  width: 40%;
+  border-radius: 8%;
+  padding: 2%;
+}
+.home .why h2 {
+  width: 40%;
+  padding: 2%;
+}
+.home h3 {
+  padding: 0 0 2% 0;
+  font-size: 24px;
+  margin-bottom: 2%;
+  color: #444444;
+}
 /* Recipes */
 .recipe-list {
   text-align: center;
