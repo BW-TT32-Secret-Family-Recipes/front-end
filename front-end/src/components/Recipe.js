@@ -1,14 +1,14 @@
 import React from 'react'
 import recipeData from '../data/recipeData'
 
-const Recipe = () => {
+const Recipe = (props) => {
   return (
     <div className='recipe-card'>
-      <img src={recipeData[0].image} />
+      <img src={props.image} />
 
-      <span id='mins'>{recipeData[0].timeToPrepare} mins</span>
+      {/* <span id='mins'>{props.timeToPrepare} mins</span>
 
-      <span id='servings'>{recipeData[0].servings} servings</span>
+      <span id='servings'>{props.servings} servings</span> */}
     </div>
   )
 }
