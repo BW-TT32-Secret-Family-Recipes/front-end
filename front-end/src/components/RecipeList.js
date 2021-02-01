@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
+// Need to create a <Recipe /> component
+// Need to map through the data and render a <Recipe /> component for each recipe
+// Need to style recipe
+
 const RecipeList = () => {
   const [recipes, setRecipes] = useState([])
 
@@ -9,6 +13,7 @@ const RecipeList = () => {
       .get('https://bw-tt32-secret-family-recipes.herokuapp.com/api/recipes')
       .then(res => {
         setRecipes(res.data)
+        console.log(res.data)
       })
       .catch(err => {
         console.log('NO BUENO, ABORT MISSION')
