@@ -18,7 +18,7 @@ const NewUserForm = (props) => {
     axios
       .post('https://bw-tt32-secret-family-recipes.herokuapp.com/api/auth/register', formData)
       .then(res => {
-        console.log(res)
+        props.history.push('/recipes')
       })
       .catch(err => {
         console.log(err)
