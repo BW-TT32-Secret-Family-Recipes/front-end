@@ -5,6 +5,8 @@ import PrivateRoute from './components/PrivateRoute'
 import RecipeList from './components/RecipeList'
 import Recipe from './components/Recipe'
 import RecipeForm from './components/RecipeForm'
+import NewUserForm from './components/NewUserForm'
+import LoginForm from './components/LoginForm'
 
 const categories = ['Breakfast', 'Lunch', 'Dinner', 'Snacks'];
 
@@ -18,6 +20,8 @@ const App = () => {
       <Route path='/add-recipe'>
         <RecipeForm categories={categories} />
       </Route>
+      <Route path='/new-user' component={NewUserForm} />
+      <Route path='/login' component={LoginForm} />
 
       {/* 
         <Route path='/login' component={}/>
