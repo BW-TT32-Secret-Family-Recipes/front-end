@@ -12,7 +12,7 @@ const RecipeList = () => {
 
   return (
     <div className='recipe-container'>
-      <h2>Recipe List</h2>
+      <h2>Recipes</h2>
 
       <div className='recipe-list'>
         {recipes.map(recipe => {
