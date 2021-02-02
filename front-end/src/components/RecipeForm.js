@@ -1,5 +1,6 @@
 //Form for adding/editing recipes
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 const RecipeForm = (props) => {
 
@@ -49,4 +50,10 @@ const RecipeForm = (props) => {
     );
 };
 
-export default RecipeForm;
+const mapStateToProps = state => {
+    return {
+        categories: state.categories
+    }
+}
+
+export default connect(mapStateToProps)(RecipeForm);
