@@ -10,6 +10,7 @@ const Nav = () => {
           <img src={logo} alt='secret family recipes cookbook'/>
         </Link>
         <div className='links'>
+          {/* add later -- if logged in, log out button & route, else log-in button and route*/}
           <Link to='/login'>Login</Link>
         </div>
       </nav>
