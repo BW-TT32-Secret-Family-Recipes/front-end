@@ -6,6 +6,8 @@ import RecipeList from './components/RecipeList'
 import Recipe from './components/Recipe'
 import RecipeForm from './components/RecipeForm'
 
+const categories = ['Breakfast', 'Lunch', 'Dinner', 'Snacks'];
+
 const App = () => {
   return (
     <>
@@ -13,6 +15,9 @@ const App = () => {
 
       <Route exact path='/' component={Home} />
       <Route path='/recipes' component={RecipeList} />
+      <Route path='/add-recipe'>
+        <RecipeForm categories={categories} />
+      </Route>
 
       {/* 
         <Route path='/login' component={}/>
