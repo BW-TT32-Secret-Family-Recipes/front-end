@@ -8,8 +8,6 @@ import RecipeForm from './components/RecipeForm'
 import NewUserForm from './components/NewUserForm'
 import LoginForm from './components/LoginForm'
 
-const categories = ['Breakfast', 'Lunch', 'Dinner', 'Snacks'];
-
 const App = () => {
   return (
     <>
