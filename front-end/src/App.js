@@ -18,7 +18,7 @@ const App = () => {
       <Route exact path='/' component={Home} />
       <Route path='/recipes' component={RecipeList} />
       <Route path='/add-recipe'>
-        <RecipeForm categories={categories} />
+        <RecipeForm />
       </Route>
       <Route path='/new-user' component={NewUserForm} />
       <Route path='/login' component={LoginForm} />
