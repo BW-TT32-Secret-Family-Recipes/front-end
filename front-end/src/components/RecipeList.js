@@ -2,20 +2,22 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Recipe from './Recipe'
 import recipeData from '../data/recipeData'
+import Search from './Search';
 
 // Need to create a <Recipe /> component
 // Need to map through the data and render a <Recipe /> component for each recipe
 // Need to style recipe
 
 const RecipeList = () => {
-  const [recipes, setRecipes] = useState(recipeData)
+  const [recipes, setRecipes] = useState(recipeData);
+  const [filteredRecipes, setFilteredRecipes] = useState(recipes);
 
   return (
     <div className='recipe-container'>
+      <Search recipes={recipes} setFilteredRecipes={setFilteredRecipes}/>
       <h2>Recipes</h2>
-
       <div className='recipe-list'>
-        {recipes.map(recipe => {
+        {filteredRecipes.map(recipe => {
           return (
             <Recipe
               key={recipe.id}
@@ -28,7 +30,6 @@ const RecipeList = () => {
           )
         })}
       </div>
-
     </div>
   )
 }
