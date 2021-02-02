@@ -22,7 +22,9 @@ const RecipeList = () => {
               image={recipe.image}
               name={recipe.name}
               timeToPrepare={recipe.timeToPrepare}
-              servings={recipe.servings} />
+              servings={recipe.servings}
+              description={recipe.description}
+            />
           )
         })}
       </div>

@@ -1,14 +1,20 @@
 import React from 'react'
-import recipeData from '../data/recipeData'
 
 const Recipe = (props) => {
   return (
-    <div className='recipe-card'>
-      <img src={props.image} />
+    <div className='card'>
 
-      {/* <span id='mins'>{props.timeToPrepare} mins</span> */}
+      <img src={props.image} className='card-image' />
 
-      {/* <span id='servings'>{props.servings} servings</span> */}
+      <div className='card-text'>
+        <h3>{props.name}</h3>
+        <p>{props.description}</p>
+      </div>
+
+      <div className='card-stats'>
+        <p>{props.servings} Servings</p>
+        <p>{props.timeToPrepare} mins</p>
+      </div>
     </div>
   )
 }
