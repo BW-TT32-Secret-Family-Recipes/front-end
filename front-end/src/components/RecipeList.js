@@ -13,21 +13,23 @@ const RecipeList = () => {
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
 
   return (
-    <div className='recipe-list'>
+    <div className='recipe-container'>
       <Search recipes={recipes} setFilteredRecipes={setFilteredRecipes}/>
-      <h2>Recipe List</h2>
-
-      {console.log(recipes)}
-
-      {filteredRecipes.map(recipe => {
-        return (
-          <Recipe
-            image={recipe.image}
-            name={recipe.name}
-            timeToPrepare={recipe.timeToPrepare}
-            servings={recipe.servings} />
-        )
-      })}
+      <h2>Recipes</h2>
+      <div className='recipe-list'>
+        {filteredRecipes.map(recipe => {
+          return (
+            <Recipe
+              key={recipe.id}
+              image={recipe.image}
+              name={recipe.name}
+              timeToPrepare={recipe.timeToPrepare}
+              servings={recipe.servings}
+              description={recipe.description}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }
