@@ -24,7 +24,7 @@ const LoginForm = (props) => {
             </label>
             <label className='formItem' key='2'>
                 Password
-                <input required type='password' name='username' value={formData.value} onChange={handleChange}/>
+                <input required type='password' name='password' value={formData.value} onChange={handleChange}/>
             </label>
             <div className='formItem' key='3'>
                 <button>Log In</button>
