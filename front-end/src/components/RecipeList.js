@@ -9,16 +9,17 @@ import Search from './Search';
 // Need to style recipe
 
 const RecipeList = () => {
-  const [recipes, setRecipes] = useState(recipeData)
+  const [recipes, setRecipes] = useState(recipeData);
+  const [filteredRecipes, setFilteredRecipes] = useState(recipes);
 
   return (
     <div className='recipe-list'>
-      <Search/>
+      <Search recipes={recipes} setFilteredRecipes={setFilteredRecipes}/>
       <h2>Recipe List</h2>
 
       {console.log(recipes)}
 
-      {recipes.map(recipe => {
+      {filteredRecipes.map(recipe => {
         return (
           <Recipe
             image={recipe.image}

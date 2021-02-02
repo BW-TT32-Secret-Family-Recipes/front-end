@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
 
-export default function Search() {
+export default function Search(props) {
   const [searchTerm, setSearchTerm] = useState('');
+  const { recipes, setFilteredRecipes } = props;
 
   const handleChange = e => {
     setSearchTerm(e.target.value)
   }
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    // const filtered = 123;
+  }
+  
   return (
     <div>
-      <h1>Hey, I'm a search bar</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor='search-bar'>Search recipes</label>
         <input
           type='text'
