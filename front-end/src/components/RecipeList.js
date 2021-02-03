@@ -10,9 +10,11 @@ const RecipeList = (props) => {
   const [recipes, setRecipes] = useState([])
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
   const [refresh, setRefresh] = useState([])
+  const [isFetching, setIsFetching] = useState(false);
 
   const userId = localStorage.getItem('currentUserId')
   useEffect(() => {
+    setIsFetching(true);
     axiosWithAuth()
       .get(`https://bw-tt32-secret-family-recipes.herokuapp.com/api/users/${userId}/recipes`)
       .then(res => {
@@ -22,11 +24,12 @@ const RecipeList = (props) => {
           : newArr = [res.data]
         setRecipes(newArr);
         setFilteredRecipes(newArr);
-        // console.log(res)
+        setIsFetching(false);
       })
       .catch(err => {
         console.log('NO BUENO, ABORT MISSION')
-        console.log(err)
+        console.log(err);
+        setIsFetching(false);
       })
   }, [refresh, userId])
 
@@ -50,6 +53,7 @@ const RecipeList = (props) => {
       <h2>Recipes</h2>
       <Search
         recipes={recipes}
+        filteredRecipes={filteredRecipes}
         setFilteredRecipes={setFilteredRecipes}
       />
       <ul>
@@ -71,13 +75,18 @@ const RecipeList = (props) => {
         })}
       </ul>
       {
-        filteredRecipes.length === 0 && recipes.length > 0
+        filteredRecipes.length === 0 && recipes.length > 0 
           ? <div>No results. Reset your filters to see some delicious recipes!</div>
           : ''
       }
       {
-        filteredRecipes.length === 0 && recipes.length === 0
+        filteredRecipes.length === 0 && recipes.length === 0 && !isFetching
         ? <div><Link to={`/${userId}/add-recipe`}>Add some recipes!</Link></div>
+        : ''
+      }
+      {
+        isFetching === true
+        ? <div>Loading...</div>
         : ''
       }
     </div>
