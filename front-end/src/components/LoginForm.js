@@ -29,12 +29,12 @@ const LoginForm = (props) => {
           .get('https://bw-tt32-secret-family-recipes.herokuapp.com/api/users')
             .then(res=> {
               console.log(res)
+              props.login()
               const user = res.data.filter(user => {
                 return user.username === formData.username
               })
               console.log(user)
               localStorage.setItem('currentUserId', user[0].id)
-              props.login()
               props.history.push(`/${user[0].id}/home`)
             })
       })
@@ -63,7 +63,7 @@ const LoginForm = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.currentUser
+    state
   }
 }
 

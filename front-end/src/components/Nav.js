@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux'
+import {logout } from '../actions/index'
 import logo from '../assets/images/logo-long.png';
 
-const Nav = ({currentUser}) => {
-  const logout = () => {
+const Nav = ({logout}) => {
+  const handleLogout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('currentUserId')
+    logout()
     window.location.href='/'
   }
 
@@ -15,7 +17,7 @@ const Nav = ({currentUser}) => {
     return (
       <>
         <nav>
-          <Link to={`/${id}`} className='logo-link'>
+          <Link to={`/${id}/home`} className='logo-link'>
             <img src={logo} alt='secret family recipes cookbook'/>
           </Link>
           <div className='links'>
@@ -23,7 +25,7 @@ const Nav = ({currentUser}) => {
             <Link to={`/${id}/home`}>Home</Link>
             <Link to={`/${id}/recipes`}>My Recipes</Link>
             <Link to={`/${id}/add-recipe`}>Add New Recipe</Link>
-            <Link onClick={logout}>Logout</Link>
+            <Link onClick={handleLogout}>Logout</Link>
           </div>
         </nav>
       </>
@@ -50,8 +52,8 @@ const Nav = ({currentUser}) => {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.currentUser
+    state
   }
 }
 
-export default connect(mapStateToProps)(Nav)
+export default connect(mapStateToProps, {logout})(Nav)
