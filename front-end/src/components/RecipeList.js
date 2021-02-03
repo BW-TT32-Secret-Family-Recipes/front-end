@@ -4,6 +4,7 @@ import axios from 'axios'
 // import recipeData from '../data/recipeData'
 import Search from './Search';
 import axiosWithAuth from '../utils/axiosWithAuth'
+import { Link } from 'react-router-dom';
 
 const RecipeList = (props) => {
   const [recipes, setRecipes] = useState([])
@@ -69,7 +70,16 @@ const RecipeList = (props) => {
           )
         })}
       </ul>
-
+      {
+        filteredRecipes.length === 0 && recipes.length > 0
+          ? <div>No results. Reset your filters to see some delicious recipes!</div>
+          : ''
+      }
+      {
+        filteredRecipes.length === 0 && recipes.length === 0
+        ? <div><Link to={`/${userId}/add-recipe`}>Add some recipes!</Link></div>
+        : ''
+      }
     </div>
   )
 }
