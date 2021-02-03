@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 function Search(props) {
   const [searchTerm, setSearchTerm] = useState('');
-  const { recipes, setFilteredRecipes } = props;
+  const { recipes, setFilteredRecipes, categories } = props;
 
   const handleChange = e => {
     setSearchTerm(e.target.value)
@@ -26,22 +26,48 @@ function Search(props) {
     setSearchTerm('');
     setFilteredRecipes(recipes);
   }
+
+  const filterClick = e => {
+    const filtered = recipes.filter(recipe => e.target.dataset.cat === recipe.category_name)
+    setFilteredRecipes(filtered);
+  }
   
   return (
     <div>
-      <form onSubmit={e => e.preventDefault()}>
-        <label htmlFor='search-bar'>Search recipes</label>
-        <input
-          type='text'
-          name='search-bar'
-          placeholder='Search recipes'
-          value={searchTerm}
-          onChange={handleChange}
-        />
-        <button onClick = {handleClear}>clear</button>
-      </form>
+      <div className='search-bar'>
+        <form onSubmit={e => e.preventDefault()}>
+          <label htmlFor='search-bar'>Search recipes</label>
+          <input
+            type='text'
+            name='search-bar'
+            placeholder='Search recipes'
+            value={searchTerm}
+            onChange={handleChange}
+          />
+          <button onClick = {handleClear}>clear</button>
+        </form>
+      </div>
+      <div className='filter'>
+        {categories.map(category => {
+          return (
+            <div
+              className='category'
+              key={categories.indexOf(category)}
+              onClick={filterClick}
+              data-cat={category}
+            >
+              {category}  
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
 
-export default connect(null)(Search);
+const mapStateToProps = (state) => {
+  return {
+    categories: state.categories
+  }
+}
+export default connect(mapStateToProps)(Search);
