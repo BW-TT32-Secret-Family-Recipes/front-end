@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 function Search(props) {
   const [ searchTerm, setSearchTerm ] = useState('');
   const [ selected, setSelected ] = useState('');
-  const { recipes, setFilteredRecipes } = props;
+  const { recipes, filteredRecipes, setFilteredRecipes } = props;
 
   const handleChange = e => {
     setSearchTerm(e.target.value)
@@ -29,14 +29,19 @@ function Search(props) {
     setSelected('');
   }
 
-
-  const categories = recipes.map(recipe => {
-    return recipe.category_name
+  //grab categories from the recipes list
+  let categories = recipes.map(recipe => {
+    return recipe.category_name.toLowerCase()
   })
-  console.log(categories);
+  //make sure they are unique
+  const onlyUnique = (value, index, self) => {
+    return self.indexOf(value) === index;
+  }
+  categories = categories.filter(onlyUnique);
+
   
   const filterClick = e => {
-    const filtered = recipes.filter(recipe => e.target.dataset.cat === recipe.category_name)
+    const filtered = recipes.filter(recipe => e.target.dataset.cat.toLowerCase() === recipe.category_name.toLowerCase())
     setFilteredRecipes(filtered);
     setSelected(e.target.dataset.cat);
   }
@@ -68,8 +73,14 @@ function Search(props) {
             </div>
           )
         })}
-      </div> */}
-      <button onClick = {handleClear}>clear filters</button>
+
+      </div>
+      {/* conditionally render the 'clear filters' button */
+        filteredRecipes.length !== recipes.length
+        ? <button onClick = {handleClear}>clear filters</button>
+        : ''
+      }
+
     </div>
   )
 }
