@@ -1,21 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
-export default function Search(props) {
+function Search(props) {
   const [searchTerm, setSearchTerm] = useState('');
   const { recipes, setFilteredRecipes } = props;
 
   const handleChange = e => {
     setSearchTerm(e.target.value)
+
+    const compare = toCompare => {
+      return toCompare.toLowerCase().includes(searchTerm.toLowerCase());
+    }
+    const filtered = recipes.filter(recipe => {
+      return compare(recipe.title)
+      || compare(recipe.source_name) ||
+      compare(recipe.ingredients) ||
+      compare(recipe.instructions) ||
+      compare(recipe.category_name)
+    })
+    setFilteredRecipes(filtered);
   }
 
-  const handleSubmit = e => {
+  const handleClear = e => {
     e.preventDefault();
-    // const filtered = 123;
+    setSearchTerm('');
+    setFilteredRecipes(recipes);
   }
   
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={e => e.preventDefault()}>
         <label htmlFor='search-bar'>Search recipes</label>
         <input
           type='text'
@@ -24,8 +38,10 @@ export default function Search(props) {
           value={searchTerm}
           onChange={handleChange}
         />
-        <button>search</button>
+        <button onClick = {handleClear}>clear</button>
       </form>
     </div>
   )
 }
+
+export default connect(null)(Search);
