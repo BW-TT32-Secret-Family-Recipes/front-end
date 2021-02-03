@@ -28,6 +28,7 @@ const RecipeForm = (props) => {
             .then(res=> {
                 console.log(res)
                 setFormData(initialFormData)
+                props.history.push(`/${id}/recipes`)
             })
             .catch(err=> {
                 console.log(err)

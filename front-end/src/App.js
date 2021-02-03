@@ -14,7 +14,6 @@ const App = () => {
       <Nav />
 
       <Route exact path='/' component={Home} />
-      <PrivateRoute exact path='/:userId/home' component={Home}/>
       <PrivateRoute exact path='/:userId/recipes' component={RecipeList} />
       <PrivateRoute path='/:userId/recipes/:recipeId/edit-recipe' component={EditRecipe}/>
       <PrivateRoute path='/:userId/add-recipe' component={RecipeForm} />

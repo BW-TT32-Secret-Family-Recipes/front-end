@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux'
 import {logout } from '../actions/index'
 import logo from '../assets/images/logo-long.png';
 
-const Nav = ({logout}) => {
+const Nav = ({logout, userId }) => {
+  const [id, setId] = useState(null)
+  
+  useEffect(()=> {
+    const currentUserId = localStorage.getItem('currentUserId')
+    if(currentUserId) {
+      setId(currentUserId)
+    } else {
+      setId(userId)
+    }
+  }, [userId])
+  
   const handleLogout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('currentUserId')
@@ -13,16 +24,15 @@ const Nav = ({logout}) => {
   }
 
   if(localStorage.getItem('token')) {
-    const id = localStorage.getItem('currentUserId')
     return (
       <>
         <nav>
-          <Link to={`/${id}/home`} className='logo-link'>
+          <Link to={`/`} className='logo-link'>
             <img src={logo} alt='secret family recipes cookbook'/>
           </Link>
           <div className='links'>
             {/* add later -- if logged in, log out button & route, else log-in button and route*/}
-            <Link to={`/${id}/home`}>Home</Link>
+            <Link to={`/`}>Home</Link>
             <Link to={`/${id}/recipes`}>My Recipes</Link>
             <Link to={`/${id}/add-recipe`}>Add New Recipe</Link>
             <Link onClick={handleLogout}>Logout</Link>
@@ -52,7 +62,7 @@ const Nav = ({logout}) => {
 
 const mapStateToProps = (state) => {
   return {
-    state
+    userId: state.currentUserId
   }
 }
 
