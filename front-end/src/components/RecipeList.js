@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Recipe from './Recipe'
-import recipeData from '../data/recipeData'
+// import Recipe from './Recipe'
+// import recipeData from '../data/recipeData'
 import Search from './Search';
 import axiosWithAuth from '../utils/axiosWithAuth'
 
@@ -44,11 +44,13 @@ const RecipeList = (props) => {
       })
   }
 
-
   return (
     <div className='recipe-container'>
       <h2>Recipes</h2>
-      <Search recipes={recipes} setFilteredRecipes={setFilteredRecipes}/>
+      <Search
+        recipes={recipes}
+        setFilteredRecipes={setFilteredRecipes}
+      />
       <ul>
         {filteredRecipes.map(recipe => {
           return (

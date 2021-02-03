@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 function Search(props) {
-  const [searchTerm, setSearchTerm] = useState('');
-  const { recipes, setFilteredRecipes, categories } = props;
+  const [ searchTerm, setSearchTerm ] = useState('');
+  const { recipes, setFilteredRecipes, categories, clearFilters } = props;
 
   const handleChange = e => {
     setSearchTerm(e.target.value)
@@ -12,8 +12,8 @@ function Search(props) {
       return toCompare.toLowerCase().includes(searchTerm.toLowerCase());
     }
     const filtered = recipes.filter(recipe => {
-      return compare(recipe.title)
-      || compare(recipe.source_name) ||
+      return compare(recipe.title) ||
+      compare(recipe.source_name) ||
       compare(recipe.ingredients) ||
       compare(recipe.instructions) ||
       compare(recipe.category_name)
@@ -44,7 +44,6 @@ function Search(props) {
             value={searchTerm}
             onChange={handleChange}
           />
-          <button onClick = {handleClear}>clear</button>
         </form>
       </div>
       <div className='filter'>
@@ -61,6 +60,7 @@ function Search(props) {
           )
         })}
       </div>
+      <button onClick = {handleClear}>clear filters</button>
     </div>
   )
 }
