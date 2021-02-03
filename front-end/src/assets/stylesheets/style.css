@@ -81,16 +81,18 @@ nav {
   flex-wrap: wrap;
   align-items: flex-start;
 }
-nav a {
+nav a, nav button {
   text-transform: uppercase;
   color: #3a3a3a;
   font-size: 1.3rem;
   text-decoration: none;
   padding: 1rem;
   background-color: white;
+  border: none;
+  cursor: pointer;
 }
 
-nav a:hover {
+nav a:hover, nav button:hover {
   background-color: #F2A22C;
 }
 

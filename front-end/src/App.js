@@ -17,17 +17,9 @@ const App = () => {
       <PrivateRoute exact path='/:userId/recipes' component={RecipeList} />
       <PrivateRoute path='/:userId/recipes/:recipeId/edit-recipe' component={EditRecipe}/>
       <PrivateRoute path='/:userId/add-recipe' component={RecipeForm} />
-        {/* <RecipeForm /> */}
-      {/* </PrivateRoute> */}
       <Route path='/new-user' component={NewUserForm} />
       <Route path='/login' component={LoginForm} />
 
-      {/* 
-        <Route path='/login' component={}/>
-        <Route path='/new-user' component={}/>
-        <PrivateRoute path='/add-recipe' component={}/>
-        <PrivateRoute path='/my-recipes' component={}/>
-        */}
     </>
   )
 }

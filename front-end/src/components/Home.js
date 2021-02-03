@@ -28,7 +28,6 @@ const Home = () => {
               <img src={recipeCard} alt='family cooking' />
             </div>
           </div>
-          {/* <Link to='/new-user' id='register-btn'>Register</Link> */}
         </section>
 
       </section>

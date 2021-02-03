@@ -5,7 +5,7 @@ function Search(props) {
   const [ searchTerm, setSearchTerm ] = useState('');
   const [ selected, setSelected ] = useState('');
   const { recipes, filteredRecipes, setFilteredRecipes } = props;
-
+  //results will update as user types
   const handleChange = e => {
     setSearchTerm(e.target.value)
 
@@ -41,9 +41,20 @@ function Search(props) {
 
   
   const filterClick = e => {
-    const filtered = recipes.filter(recipe => e.target.dataset.cat.toLowerCase() === recipe.category_name.toLowerCase())
-    setFilteredRecipes(filtered);
-    setSelected(e.target.dataset.cat);
+    const makeClickedSelected = () => {
+      const filtered = recipes.filter(recipe => e.target.dataset.cat.toLowerCase() === recipe.category_name.toLowerCase())
+      setFilteredRecipes(filtered);
+      setSelected(e.target.dataset.cat);
+    }
+
+    const clearSelected = () => {
+      setSelected('');
+      setFilteredRecipes(recipes);
+    }
+
+    (selected === e.target.dataset.cat)
+    ? clearSelected()
+    : makeClickedSelected()
   }
   
   return (

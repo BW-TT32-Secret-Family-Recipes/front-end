@@ -18,7 +18,6 @@ const NewUserForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
 
     axios
       .post('https://bw-tt32-secret-family-recipes.herokuapp.com/api/auth/register', formData)
@@ -40,7 +39,7 @@ const NewUserForm = (props) => {
       </label>
       <label key='2' className='formItem'>
         Password
-                <input required minlength='8' type='password' name='password' value={formData.value} onChange={handleChange} />
+                <input required minLength='8' type='password' name='password' value={formData.value} onChange={handleChange} />
       </label>
       <div className='formItem' key='3'>
         <button>Register</button>
