@@ -33,10 +33,10 @@ function Search(props) {
   }
   
   return (
-    <div>
+    <div className='Search'>
       <div className='search-bar'>
         <form onSubmit={e => e.preventDefault()}>
-          <label htmlFor='search-bar'>Search recipes</label>
+          <label htmlFor='search-bar'><span className='visuallyHidden'>Search recipes</span></label>
           <input
             type='text'
             name='search-bar'
