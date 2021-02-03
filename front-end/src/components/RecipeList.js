@@ -38,7 +38,7 @@ import Search from './Search';
 //   )
 // }
 
-const RecipeList = () => {
+const RecipeList = (props) => {
   const [recipes, setRecipes] = useState([])
 
   useEffect(() => {
@@ -54,6 +54,11 @@ const RecipeList = () => {
       })
   }, [])
 
+  const routeToEdit = (recipe) => {
+    const userId = localStorage.getItem('currentUserId')
+    props.history.push(`/${userId}/recipes/${recipe.id}/edit-recipe`)
+  }
+
 
   return (
     <div className='recipe-container'>
@@ -63,6 +68,9 @@ const RecipeList = () => {
         {recipes.map(recipe => {
           return (
             <div className='recipe'>
+              <button onClick={()=> {
+                routeToEdit(recipe)
+              }}>  Edit Recipe</button>
               <li key={recipe.id}>
                 <h4><strong>{recipe.title}</strong></h4>
                 <strong>Directions: </strong>{recipe.instructions}

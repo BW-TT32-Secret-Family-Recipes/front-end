@@ -2,9 +2,14 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 
+const initialFormData = {
+  username: '',
+  password: ''
+}
+
 const NewUserForm = (props) => {
 
-  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -18,6 +23,7 @@ const NewUserForm = (props) => {
     axios
       .post('https://bw-tt32-secret-family-recipes.herokuapp.com/api/auth/register', formData)
       .then(res => {
+        setFormData(initialFormData)
         props.history.push('/')
       })
       .catch(err => {
