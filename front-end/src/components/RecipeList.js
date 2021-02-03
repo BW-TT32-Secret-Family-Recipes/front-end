@@ -62,10 +62,12 @@ const RecipeList = () => {
       <ul>
         {recipes.map(recipe => {
           return (
-            <li key={recipe.id}>
-              <h4><strong>{recipe.title}</strong></h4>
-              <strong>Directions: </strong>{recipe.instructions}
-            </li>
+            <div className='recipe'>
+              <li key={recipe.id}>
+                <h4><strong>{recipe.title}</strong></h4>
+                <strong>Directions: </strong>{recipe.instructions}
+              </li>
+            </div>
           )
         })}
       </ul>
