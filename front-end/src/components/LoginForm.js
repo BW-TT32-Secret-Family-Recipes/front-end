@@ -1,5 +1,7 @@
 //Login form component
 import React, { useState } from 'react';
+import {connect} from 'react-redux'
+import {login} from '../actions/'
 import axios from 'axios'
 
 const LoginForm = (props) => {
@@ -21,9 +23,20 @@ const LoginForm = (props) => {
         // Place in state, redux, or localStorage?
         // Do we want to set a timeout for token?
 
-        localStorage.setItem('Token', res.data.token)
-
-        props.history.push('/recipes')
+        localStorage.setItem('token', res.data.token)
+        // props.history.push('/')
+        axios
+          .get('https://bw-tt32-secret-family-recipes.herokuapp.com/api/users')
+            .then(res=> {
+              console.log(res)
+              const user = res.data.filter(user => {
+                return user.username === formData.username
+              })
+              console.log(user)
+              localStorage.setItem('currentUserId', user[0].id)
+              props.login()
+              props.history.push(`/${user[0].id}/home`)
+            })
       })
       .catch(err => {
         console.log(err)
@@ -48,4 +61,10 @@ const LoginForm = (props) => {
   );
 };
 
-export default LoginForm;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+export default connect(mapStateToProps, {login})(LoginForm)
