@@ -2,7 +2,6 @@ import React from 'react';
 import family from '../assets/images/family-cooking.jpg';
 import recipeCard from '../assets/images/recipe-card.jpg';
 import logo from '../assets/images/logo.png';
-import {Link} from 'react-router-dom';
 
 const Home = () => {
   return (
