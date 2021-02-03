@@ -41,7 +41,7 @@ function Search(props) {
 
   
   const filterClick = e => {
-    const filtered = recipes.filter(recipe => e.target.dataset.cat === recipe.category_name)
+    const filtered = recipes.filter(recipe => e.target.dataset.cat.toLowerCase() === recipe.category_name.toLowerCase())
     setFilteredRecipes(filtered);
     setSelected(e.target.dataset.cat);
   }
