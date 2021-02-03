@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
-import {addCategory} from '../actions/index'
 import { useParams } from 'react-router-dom'
-import {connect} from 'react-redux'
 
 
 const initialFormData = {
@@ -16,7 +14,7 @@ const initialFormData = {
 
 }
 
-const EditRecipe = ({categories, history, addCategory}) => {
+const EditRecipe = ({ history }) => {
     const [formData, setFormData] = useState(initialFormData)
 
     const {recipeId} = useParams()
@@ -31,7 +29,7 @@ const EditRecipe = ({categories, history, addCategory}) => {
             .catch(err=> {
                 console.log(err)
             })
-    }, [])
+    }, [recipeId, userId])
 
 
     const handleChanges = e => {
@@ -50,7 +48,6 @@ const EditRecipe = ({categories, history, addCategory}) => {
             ingredients: formData.ingredients,
             instructions: formData.instructions
         }
-        addCategory(formData.category_name)
         axiosWithAuth().put(`users/${userId}/recipes/${recipeId}`, updatedRecipe)
             .then(res=> {
                 console.log(res)
@@ -62,9 +59,6 @@ const EditRecipe = ({categories, history, addCategory}) => {
             })
     }
 
-    // const formCategories = categories.filter((item)=> {
-    //     return (item !== formData.category_name)
-    // })
 
     return (
         <form className='addForm' onSubmit={onSubmit}>
@@ -118,23 +112,5 @@ const EditRecipe = ({categories, history, addCategory}) => {
         </form>
     )
 }
-                // <select
-                //     required name='category_name'
-                //     onChange={handleChanges}
-                //     // value={formData.category_name}
-                // >
-                //     <option value={formData.category_name}>{formData.category_name}</option>
-                //     {/* <option value=''>--select one--</option> */}
-                //     {formCategories.map(item => 
-                //         <option value={item}>{item}</option>
-                //     )}
-                //     <option value={formData.new_category}>Add New</option>
-                // </select>
 
-const mapStateToProps = (state) => {
-    return {
-        categories: state.categories
-    }
-}
-
-export default connect(mapStateToProps, {addCategory})(EditRecipe)
+export default EditRecipe

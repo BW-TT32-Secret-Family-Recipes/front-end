@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 // import Recipe from './Recipe'
 // import recipeData from '../data/recipeData'
 import Search from './Search';
