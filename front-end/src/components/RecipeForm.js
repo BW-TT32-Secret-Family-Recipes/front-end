@@ -24,7 +24,6 @@ const RecipeForm = (props) => {
         event.preventDefault();
         axiosWithAuth().post(`/users/${id}/recipes`, formData)
             .then(res=> {
-                console.log(res)
                 setFormData(initialFormData)
                 props.history.push(`/${id}/recipes`)
             })

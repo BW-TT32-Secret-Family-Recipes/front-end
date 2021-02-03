@@ -39,7 +39,7 @@ const RecipeList = (props) => {
   const deleteRecipe = (recipe) => {
     axiosWithAuth().delete(`/users/${userId}/recipes/${recipe.id}`)
       .then(res=> {
-        console.log(res)
+        // console.log(res)
         setRefresh([])
       })
       .catch(err=> {

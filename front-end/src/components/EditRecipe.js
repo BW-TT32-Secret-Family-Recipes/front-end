@@ -23,7 +23,7 @@ const EditRecipe = ({ history }) => {
     useEffect(()=> {
         axiosWithAuth().get(`users/${userId}/recipes/${recipeId}`)
             .then(res=> {
-                console.log(res)
+                // console.log(res)
                 setFormData(res.data)
             })
             .catch(err=> {
@@ -50,7 +50,7 @@ const EditRecipe = ({ history }) => {
         }
         axiosWithAuth().put(`users/${userId}/recipes/${recipeId}`, updatedRecipe)
             .then(res=> {
-                console.log(res)
+                // console.log(res)
                 setFormData(initialFormData)
                 history.push(`/${userId}/recipes`)
             })

@@ -18,7 +18,7 @@ const LoginForm = (props) => {
     axios
       .post('https://bw-tt32-secret-family-recipes.herokuapp.com/api/auth/login', formData)
       .then(res => {
-        console.log(`Success, token is ${res.data.token}`)
+        // console.log(`Success, token is ${res.data.token}`)
 
         // Place in state, redux, or localStorage?
         // Do we want to set a timeout for token?
@@ -28,12 +28,12 @@ const LoginForm = (props) => {
         axios
           .get('https://bw-tt32-secret-family-recipes.herokuapp.com/api/users')
             .then(res=> {
-              console.log(res)
+              // console.log(res)
               props.login()
               const user = res.data.filter(user => {
                 return user.username === formData.username
               })
-              console.log(user)
+              // console.log(user)
               props.setId(user[0].id)
               localStorage.setItem('currentUserId', user[0].id)
               props.history.push(`/${user[0].id}/recipes`)

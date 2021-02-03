@@ -35,7 +35,7 @@ const Nav = ({logout, userId }) => {
             <Link to={`/`}>Home</Link>
             <Link to={`/${id}/recipes`}>My Recipes</Link>
             <Link to={`/${id}/add-recipe`}>Add New Recipe</Link>
-            <Link onClick={handleLogout}>Logout</Link>
+            <button onClick={handleLogout}>Logout</button>
           </div>
         </nav>
       </>
