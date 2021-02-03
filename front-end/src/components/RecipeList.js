@@ -3,6 +3,7 @@ import axios from 'axios'
 import Recipe from './Recipe'
 import recipeData from '../data/recipeData'
 import Search from './Search';
+import axiosWithAuth from '../utils/axiosWithAuth'
 
 // Need to create a <Recipe /> component
 // Need to map through the data and render a <Recipe /> component for each recipe
@@ -40,7 +41,9 @@ import Search from './Search';
 
 const RecipeList = (props) => {
   const [recipes, setRecipes] = useState([])
+  const [refresh, setRefresh] = useState([])
 
+  const userId = localStorage.getItem('currentUserId')
   useEffect(() => {
     axios
       .get('https://bw-tt32-secret-family-recipes.herokuapp.com/api/recipes')
@@ -52,11 +55,21 @@ const RecipeList = (props) => {
         console.log('NO BUENO, ABORT MISSION')
         console.log(err)
       })
-  }, [])
+  }, [refresh])
 
   const routeToEdit = (recipe) => {
-    const userId = localStorage.getItem('currentUserId')
     props.history.push(`/${userId}/recipes/${recipe.id}/edit-recipe`)
+  }
+
+  const deleteRecipe = (recipe) => {
+    axiosWithAuth().delete(`/users/${userId}/recipes/${recipe.id}`)
+      .then(res=> {
+        console.log(res)
+        setRefresh([])
+      })
+      .catch(err=> {
+        console.log(err)
+      })
   }
 
 
@@ -71,6 +84,9 @@ const RecipeList = (props) => {
               <button onClick={()=> {
                 routeToEdit(recipe)
               }}>  Edit Recipe</button>
+              <button onClick={()=> {
+                deleteRecipe(recipe)
+              }}>Delete Recipe</button>
               <li key={recipe.id}>
                 <h4><strong>{recipe.title}</strong></h4>
                 <strong>Directions: </strong>{recipe.instructions}
