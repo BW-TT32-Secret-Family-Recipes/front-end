@@ -1,6 +1,6 @@
 import {LOGIN, LOGOUT} from '../actions/index'
 const initialState = {
-  categories: ['breakfast', 'lunch', 'dinner'],
+  categories: ['Breakfast', 'Lunch', 'Dinner'],
   isLoggedIn: false
 }
 

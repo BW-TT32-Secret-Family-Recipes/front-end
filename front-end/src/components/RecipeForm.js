@@ -3,10 +3,18 @@ import React, { useState } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth'
 import { connect } from 'react-redux';
 
+const initialFormData = {
+    title: '',
+    category: '',
+    source: '',
+    ingredients: '',
+    instructions: ''
+}
+
 const RecipeForm = (props) => {
 
     const { categories } = props;
-    const [formData, setFormData] = useState({title:'', category: '', source:'', ingredients:'', instructions:''});
+    const [formData, setFormData] = useState(initialFormData);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -19,6 +27,7 @@ const RecipeForm = (props) => {
         axiosWithAuth().post(`/users/${id}/recipes`, formData)
             .then(res=> {
                 console.log(res)
+                setFormData(initialFormData)
             })
             .catch(err=> {
                 console.log(err)
@@ -27,7 +36,7 @@ const RecipeForm = (props) => {
 
     return(
         <form className='addForm' onSubmit={handleSubmit}>
-            <h2>Add/Edit Recipe</h2>
+            <h2>Add Recipe</h2>
             <label className='formItem' key='1'>
                 Title
                 <input required type='text' name='title' value={formData.title} onChange={handleChange}/>
@@ -52,7 +61,7 @@ const RecipeForm = (props) => {
             </select>
             </label>
             <div className='formItem' key='6'>
-                <button>Submit</button>
+                <button>Submit Recipe</button>
             </div>
         </form>
     );

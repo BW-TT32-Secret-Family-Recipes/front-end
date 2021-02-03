@@ -5,6 +5,7 @@ import PrivateRoute from './components/PrivateRoute'
 import RecipeList from './components/RecipeList'
 import RecipeForm from './components/RecipeForm'
 import NewUserForm from './components/NewUserForm'
+import EditRecipe from './components/EditRecipe'
 import LoginForm from './components/LoginForm'
 
 const App = () => {
@@ -14,7 +15,8 @@ const App = () => {
 
       <Route exact path='/' component={Home} />
       <PrivateRoute exact path='/:userId/home' component={Home}/>
-      <PrivateRoute path='/:userId/recipes' component={RecipeList} />
+      <PrivateRoute exact path='/:userId/recipes' component={RecipeList} />
+      <PrivateRoute path='/:userId/recipes/:recipeId/edit-recipe' component={EditRecipe}/>
       <PrivateRoute path='/:userId/add-recipe' component={RecipeForm}>
         <RecipeForm />
       </PrivateRoute>
