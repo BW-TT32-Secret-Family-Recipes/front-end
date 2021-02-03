@@ -60,7 +60,7 @@ function Search(props) {
           />
         </form>
       </div>
-      {/* <div className='filter'>
+      <div className='filter'>
         {categories.map(category => {
           return (
             <div
@@ -81,6 +81,7 @@ function Search(props) {
         : ''
       }
 
+      
     </div>
   )
 }
