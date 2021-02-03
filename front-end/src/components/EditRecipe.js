@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
+import {addCategory} from '../actions/index'
 import { useParams } from 'react-router-dom'
 import {connect} from 'react-redux'
 
@@ -15,7 +16,7 @@ const initialFormData = {
 
 }
 
-const EditRecipe = ({categories, history}) => {
+const EditRecipe = ({categories, history, addCategory}) => {
     const [formData, setFormData] = useState(initialFormData)
 
     const {recipeId} = useParams()
@@ -49,6 +50,7 @@ const EditRecipe = ({categories, history}) => {
             ingredients: formData.ingredients,
             instructions: formData.instructions
         }
+        addCategory(formData.category_name)
         axiosWithAuth().put(`users/${userId}/recipes/${recipeId}`, updatedRecipe)
             .then(res=> {
                 console.log(res)
@@ -60,9 +62,9 @@ const EditRecipe = ({categories, history}) => {
             })
     }
 
-    const formCategories = categories.filter((item)=> {
-        return (item !== formData.category_name)
-    })
+    // const formCategories = categories.filter((item)=> {
+    //     return (item !== formData.category_name)
+    // })
 
     return (
         <form className='addForm' onSubmit={onSubmit}>
@@ -103,17 +105,12 @@ const EditRecipe = ({categories, history}) => {
             </label>
             <label className='formItem' key='5'>
                 Category
-                <select
-                    required name='category_name'
+                <input 
+                    name='category_name'
+                    type='text'
                     onChange={handleChanges}
-                    // value={formData.category_name}
-                >
-                    <option value={formData.category_name}>{formData.category_name}</option>
-                    {/* <option value=''>--select one--</option> */}
-                    {formCategories.map(item => 
-                        <option value={item}>{item}</option>
-                    )}
-            </select>
+                    value={formData.category_name}
+                />
             </label>
             <div className='formItem' key='6'>
                 <button>Submit Changes</button>
@@ -121,6 +118,18 @@ const EditRecipe = ({categories, history}) => {
         </form>
     )
 }
+                // <select
+                //     required name='category_name'
+                //     onChange={handleChanges}
+                //     // value={formData.category_name}
+                // >
+                //     <option value={formData.category_name}>{formData.category_name}</option>
+                //     {/* <option value=''>--select one--</option> */}
+                //     {formCategories.map(item => 
+                //         <option value={item}>{item}</option>
+                //     )}
+                //     <option value={formData.new_category}>Add New</option>
+                // </select>
 
 const mapStateToProps = (state) => {
     return {
@@ -128,4 +137,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(EditRecipe)
+export default connect(mapStateToProps, {addCategory})(EditRecipe)
