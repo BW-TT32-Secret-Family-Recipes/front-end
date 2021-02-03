@@ -60,7 +60,7 @@ function Search(props) {
           />
         </form>
       </div>
-      <div className='filter'>
+      {/* <div className='filter'>
         {categories.map(category => {
           return (
             <div
@@ -73,12 +73,14 @@ function Search(props) {
             </div>
           )
         })}
+
       </div>
       {/* conditionally render the 'clear filters' button */
         filteredRecipes.length !== recipes.length
         ? <button onClick = {handleClear}>clear filters</button>
         : ''
       }
+
     </div>
   )
 }
