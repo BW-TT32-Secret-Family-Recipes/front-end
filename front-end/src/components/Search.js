@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 function Search(props) {
   const [ searchTerm, setSearchTerm ] = useState('');
-  const { recipes, setFilteredRecipes, categories, clearFilters } = props;
+  const [ selected, setSelected ] = useState('');
+  const { recipes, setFilteredRecipes } = props;
 
   const handleChange = e => {
     setSearchTerm(e.target.value)
@@ -25,11 +26,19 @@ function Search(props) {
     e.preventDefault();
     setSearchTerm('');
     setFilteredRecipes(recipes);
+    setSelected('');
   }
 
+
+  const categories = recipes.map(recipe => {
+    return recipe.category_name
+  })
+  console.log(categories);
+  
   const filterClick = e => {
     const filtered = recipes.filter(recipe => e.target.dataset.cat === recipe.category_name)
     setFilteredRecipes(filtered);
+    setSelected(e.target.dataset.cat);
   }
   
   return (
@@ -50,7 +59,7 @@ function Search(props) {
         {categories.map(category => {
           return (
             <div
-              className='category'
+              className={ selected === category ? 'category selected' : 'category'}
               key={categories.indexOf(category)}
               onClick={filterClick}
               data-cat={category}
@@ -65,9 +74,4 @@ function Search(props) {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    categories: state.categories
-  }
-}
-export default connect(mapStateToProps)(Search);
+export default connect(null)(Search);
