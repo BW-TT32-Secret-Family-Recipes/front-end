@@ -73,6 +73,7 @@ function Search(props) {
             </div>
           )
         })}
+
       </div>
       {/* conditionally render the 'clear filters' button */
         filteredRecipes.length !== recipes.length
