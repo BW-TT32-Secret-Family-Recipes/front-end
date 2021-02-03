@@ -1,7 +1,8 @@
-import {ADD_CATEGORY, LOGIN, LOGOUT} from '../actions/index'
+import {ADD_CATEGORY, LOGIN, LOGOUT, SET_ID} from '../actions/index'
 const initialState = {
   categories: ['Breakfast', 'Lunch', 'Dinner'],
-  isLoggedIn: false
+  isLoggedIn: false,
+  currentUserId: null
 }
 
 export const reducer = (state = initialState, { type, payload }) => {
@@ -15,6 +16,8 @@ export const reducer = (state = initialState, { type, payload }) => {
         ...state,
         categories: [...state.categories, payload ]
       })
+    case(SET_ID):
+      return({...state, currentUserId: payload})
     default:
       return state
   }

@@ -1,7 +1,7 @@
 //Login form component
 import React, { useState } from 'react';
 import {connect} from 'react-redux'
-import {login} from '../actions/'
+import {login, setId} from '../actions/'
 import axios from 'axios'
 
 const LoginForm = (props) => {
@@ -34,8 +34,9 @@ const LoginForm = (props) => {
                 return user.username === formData.username
               })
               console.log(user)
+              props.setId(user[0].id)
               localStorage.setItem('currentUserId', user[0].id)
-              props.history.push(`/${user[0].id}/home`)
+              props.history.push(`/${user[0].id}/recipes`)
             })
       })
       .catch(err => {
@@ -67,4 +68,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {login})(LoginForm)
+export default connect(mapStateToProps, {login, setId})(LoginForm)

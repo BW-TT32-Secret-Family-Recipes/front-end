@@ -13,8 +13,8 @@ const RecipeList = (props) => {
 
   const userId = localStorage.getItem('currentUserId')
   useEffect(() => {
-    axios
-      .get(`https://bw-tt32-secret-family-recipes.herokuapp.com/api/users/${userId}/recipes/${userId}`)
+    axiosWithAuth()
+      .get(`https://bw-tt32-secret-family-recipes.herokuapp.com/api/users/${userId}/recipes`)
       .then(res => {
         let newArr = [];
         Array.isArray(res.data)
