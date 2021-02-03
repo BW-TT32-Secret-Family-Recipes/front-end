@@ -1,7 +1,6 @@
 //Form for adding/editing recipes
 import React, { useState } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth'
-import { connect } from 'react-redux';
 
 const initialFormData = {
     title: '',
@@ -13,7 +12,6 @@ const initialFormData = {
 
 const RecipeForm = (props) => {
 
-    const { categories } = props;
     const [formData, setFormData] = useState(initialFormData);
 
     const handleChange = (event) => {
@@ -44,7 +42,7 @@ const RecipeForm = (props) => {
             </label>
             <label className='formItem' key='2'>
                 Source
-                <input required type='text' name='source' value={formData.source} onChange={handleChange}/>
+                <input required type='text' name='source' value={formData.source} onChange={handleChange} placeholder='Grandma, Google, etc'/>
             </label>
             <label className='formItem' key='3'>
                 Ingredients
@@ -56,10 +54,13 @@ const RecipeForm = (props) => {
             </label>
             <label className='formItem' key='5'>
                 Category
-                <select required name='category' onChange={handleChange}>
-                    <option value=''>--select one--</option>
-                    {categories.map(category => <option value={category}>{category}</option>)}
-            </select>
+                <input 
+                    type='text'
+                    name='category'
+                    value={formData.category}
+                    onChange={handleChange}
+                    placeholder='Breakfast, Snack, Dessert, etc'
+                />
             </label>
             <div className='formItem' key='6'>
                 <button>Submit Recipe</button>
@@ -68,10 +69,6 @@ const RecipeForm = (props) => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        categories: state.categories
-    }
-}
 
-export default connect(mapStateToProps)(RecipeForm);
+
+export default RecipeForm

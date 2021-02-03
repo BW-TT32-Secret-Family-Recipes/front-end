@@ -79,6 +79,8 @@ function Search(props) {
         ? <button onClick = {handleClear}>clear filters</button>
         : ''
       }
+
+      
     </div>
   )
 }
