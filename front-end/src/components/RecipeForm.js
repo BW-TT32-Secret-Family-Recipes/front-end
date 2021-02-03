@@ -1,5 +1,6 @@
 //Form for adding/editing recipes
 import React, { useState } from 'react';
+import axiosWithAuth from '../utils/axiosWithAuth'
 import { connect } from 'react-redux';
 
 const RecipeForm = (props) => {
@@ -13,8 +14,15 @@ const RecipeForm = (props) => {
     };
 
     const handleSubmit = (event) => {
+        const id = localStorage.getItem('currentUserId')
         event.preventDefault();
-        console.log('success');
+        axiosWithAuth().post(`/users/${id}/recipes`, formData)
+            .then(res=> {
+                console.log(res)
+            })
+            .catch(err=> {
+                console.log(err)
+            })
     }
 
     return(

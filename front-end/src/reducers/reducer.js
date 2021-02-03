@@ -1,8 +1,14 @@
-
+import {LOGIN} from '../actions/index'
 const initialState = {
-  categories: ['breakfast', 'lunch', 'dinner']
+  categories: ['breakfast', 'lunch', 'dinner'],
+  isLoggedIn: false
 }
 
 export const reducer = (state = initialState, { type, payload }) => {
-  return initialState;
+  switch(type) {
+    case(LOGIN):
+      return({...state, isLoggedIn: true})
+    default:
+      return state
+  }
 }

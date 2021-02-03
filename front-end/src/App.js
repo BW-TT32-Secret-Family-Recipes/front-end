@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom'
 import Nav from './components/Nav'
 import PrivateRoute from './components/PrivateRoute'
 import RecipeList from './components/RecipeList'
-import Recipe from './components/Recipe'
 import RecipeForm from './components/RecipeForm'
 import NewUserForm from './components/NewUserForm'
 import LoginForm from './components/LoginForm'
@@ -14,10 +13,11 @@ const App = () => {
       <Nav />
 
       <Route exact path='/' component={Home} />
-      <Route path='/recipes' component={RecipeList} />
-      <Route path='/add-recipe'>
+      <PrivateRoute exact path='/:userId/home' component={Home}/>
+      <PrivateRoute path='/:userId/recipes' component={RecipeList} />
+      <PrivateRoute path='/:userId/add-recipe' component={RecipeForm}>
         <RecipeForm />
-      </Route>
+      </PrivateRoute>
       <Route path='/new-user' component={NewUserForm} />
       <Route path='/login' component={LoginForm} />
 
