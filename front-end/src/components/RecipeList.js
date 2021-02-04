@@ -38,11 +38,11 @@ const RecipeList = (props) => {
 
   const deleteRecipe = (recipe) => {
     axiosWithAuth().delete(`/users/${userId}/recipes/${recipe.id}`)
-      .then(res=> {
+      .then(res => {
         // console.log(res)
         setRefresh([])
       })
-      .catch(err=> {
+      .catch(err => {
         console.log(err)
       })
   }
@@ -55,38 +55,47 @@ const RecipeList = (props) => {
         filteredRecipes={filteredRecipes}
         setFilteredRecipes={setFilteredRecipes}
       />
-      <ul>
-        {filteredRecipes.map(recipe => {
-          return (
-            <div className='recipe' key={recipe.id}>
-              <button onClick={()=> {
-                routeToEdit(recipe)
-              }}>  Edit Recipe</button>
-              <button onClick={()=> {
-                deleteRecipe(recipe)
-              }}>Delete Recipe</button>
-              <li key={recipe.id}>
-                <h4><strong>{recipe.title}</strong></h4>
-                <strong>Directions: </strong>{recipe.instructions}
-              </li>
-            </div>
-          )
-        })}
-      </ul>
+
+      <div className='card'>
+        <ul>
+          {filteredRecipes.map(recipe => {
+            return (
+              <div className='recipe' key={recipe.id}>
+                <div className='card-button'>
+                  <button onClick={() => {
+                    routeToEdit(recipe)
+                  }}>  Edit Recipe</button>
+                  <button onClick={() => {
+                    deleteRecipe(recipe)
+                  }}>Delete Recipe</button>
+                </div>
+                <li key={recipe.id}>
+                  <h4><strong>{recipe.title}</strong></h4>
+
+                  <strong>Directions: </strong>{recipe.instructions}
+
+                  <br /><br /><strong>Ingredients: </strong>{recipe.ingredients}
+                </li>
+              </div>
+            )
+          })}
+        </ul>
+      </div>
+
       {
-        filteredRecipes.length === 0 && recipes.length > 0 
+        filteredRecipes.length === 0 && recipes.length > 0
           ? <div>No results. Reset your filters to see some delicious recipes!</div>
           : ''
       }
       {
         filteredRecipes.length === 0 && recipes.length === 0 && !isFetching
-        ? <div><Link to={`/${userId}/add-recipe`}>Add some recipes!</Link></div>
-        : ''
+          ? <div><Link to={`/${userId}/add-recipe`}>Add some recipes!</Link></div>
+          : ''
       }
       {
         isFetching === true
-        ? <div>Loading...</div>
-        : ''
+          ? <div>Loading...</div>
+          : ''
       }
     </div>
   )
