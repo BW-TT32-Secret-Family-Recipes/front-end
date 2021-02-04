@@ -54,6 +54,7 @@ const RecipeForm = (props) => {
             </label>
             <label className='formItem' key='5'>
                 Category
+<<<<<<< HEAD:src/components/RecipeForm.js
                 <input 
                     required
                     list='categoryList'
@@ -62,6 +63,12 @@ const RecipeForm = (props) => {
                     onChange={handleChange}
                 />
                 <datalist id='categoryList'>
+=======
+                <input required list='categorylist' name='category' value={formData.category} onChange={handleChange} />
+                <datalist
+                    id='categorylist'
+                >
+>>>>>>> cc8b6bfe1659d11193855b17ce5c4308e4e53a8d:front-end/src/components/RecipeForm.js
                     {categories.map(category => <option value={category} />)}
                 </datalist>
             </label>
