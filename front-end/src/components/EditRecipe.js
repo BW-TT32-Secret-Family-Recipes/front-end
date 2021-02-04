@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
 import { useParams } from 'react-router-dom'
+import { categories } from '../data/constants'
 
 
 const initialFormData = {
@@ -102,11 +103,15 @@ const EditRecipe = ({ history }) => {
             <label className='formItem' key='5'>
                 Category
                 <input 
+                    required
                     name='category_name'
-                    type='text'
+                    list='categorylist'
                     onChange={handleChanges}
                     value={formData.category_name}
                 />
+                <datalist id='categorylist'>
+                    {categories.map(category => <option value={category}/>)}
+                </datalist>
             </label>
             <div className='formItem' key='6'>
                 <button>Submit Changes</button>
