@@ -59,41 +59,6 @@ const RecipeList = (props) => {
         filteredRecipes={filteredRecipes}
         setFilteredRecipes={setFilteredRecipes}
       />
-<<<<<<< HEAD:front-end/src/components/RecipeList.js
-      <ul>
-        {filteredRecipes.map(recipe => {
-          return (
-            <div className='recipe' key={recipe.id}>
-              <button onClick={()=> {
-                routeToEdit(recipe)
-              }}>  Edit Recipe</button>
-              <button onClick={()=> {
-                deleteRecipe(recipe)
-              }}>Delete Recipe</button>
-              <CopyToClipboard onCopy={()=> shareRecipe(recipe)} text={`http://localhost:3000/recipes/${recipe.id}`}>
-                <button>Share Recipe</button>
-              </CopyToClipboard>
-              {/* <button onClick={()=> shareRecipe(recipe)
-              }>Share Recipe</button> */}
-              <span className={copyMessage.status && recipe.id === copyMessage.recipe_id ? 'share-message' : 'share-message hidden'}>
-                  link copied to clipboard!
-              </span>
-              <li key={recipe.id}>
-                <h4>
-                  <strong>
-                    {recipe.title}
-                  </strong>
-                </h4>
-                <strong>
-                  Directions: 
-                </strong>
-                {recipe.instructions}
-              </li>
-            </div>
-          )
-        })}
-      </ul>
-=======
 
       <div className='card'>
         <ul>
@@ -107,6 +72,14 @@ const RecipeList = (props) => {
                   <button onClick={() => {
                     deleteRecipe(recipe)
                   }}>Delete Recipe</button>
+                                <CopyToClipboard onCopy={()=> shareRecipe(recipe)} text={`http://localhost:3000/recipes/${recipe.id}`}>
+                <button>Share Recipe</button>
+              </CopyToClipboard>
+              {/* <button onClick={()=> shareRecipe(recipe)
+              }>Share Recipe</button> */}
+              <span className={copyMessage.status && recipe.id === copyMessage.recipe_id ? 'share-message' : 'share-message hidden'}>
+                  link copied to clipboard!
+              </span>
                 </div>
                 <li key={recipe.id}>
                   <h4><strong>{recipe.title}</strong></h4>
@@ -121,7 +94,6 @@ const RecipeList = (props) => {
         </ul>
       </div>
 
->>>>>>> 3ea1d8fe1a33dd478467dbeccf24104c633bb18b:src/components/RecipeList.js
       {
         filteredRecipes.length === 0 && recipes.length > 0
           ? <div>No results. Reset your filters to see some delicious recipes!</div>
