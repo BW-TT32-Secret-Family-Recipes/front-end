@@ -1,6 +1,7 @@
 //Form for adding/editing recipes
 import React, { useState } from 'react';
-import axiosWithAuth from '../utils/axiosWithAuth'
+import axiosWithAuth from '../utils/axiosWithAuth';
+import { categories } from '../data/constants';
 
 const initialFormData = {
     title: '',
@@ -54,12 +55,15 @@ const RecipeForm = (props) => {
             <label className='formItem' key='5'>
                 Category
                 <input 
-                    type='text'
+                    required
+                    list='categoryList'
                     name='category'
                     value={formData.category}
                     onChange={handleChange}
-                    placeholder='Breakfast, Snack, Dessert, etc'
                 />
+                <datalist id='categoryList'>
+                    {categories.map(category => <option value={category} />)}
+                </datalist>
             </label>
             <div className='formItem' key='6'>
                 <button>Submit Recipe</button>
