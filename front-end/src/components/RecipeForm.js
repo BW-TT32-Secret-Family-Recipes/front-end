@@ -45,11 +45,11 @@ const RecipeForm = (props) => {
             </label>
             <label className='formItem' key='3'>
                 Ingredients
-                <textarea required name='ingredients' value={formData.ingredients} onChange={handleChange}/>
+                <textarea required maxLength='128' name='ingredients' value={formData.ingredients} onChange={handleChange}/>
             </label>
             <label className='formItem' key='4'>
                 Instructions
-                <textarea required name='instructions' value={formData.instructions} onChange={handleChange}/>
+                <textarea required maxLength='1000' name='instructions' value={formData.instructions} onChange={handleChange}/>
             </label>
             <label className='formItem' key='5'>
                 Category

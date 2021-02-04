@@ -85,6 +85,7 @@ const EditRecipe = ({ history }) => {
                 Ingredients
                 <textarea
                     required name='ingredients'
+                    maxLength='128'
                     value={formData.ingredients}
                     onChange={handleChanges}
                 />
@@ -93,6 +94,7 @@ const EditRecipe = ({ history }) => {
                 Instructions
                 <textarea
                 required name='instructions'
+                maxLength='1000'
                 value={formData.instructions}
                 onChange={handleChanges}
                 />
