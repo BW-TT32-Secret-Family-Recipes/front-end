@@ -204,7 +204,7 @@ nav a:hover, nav button:hover {
 
 /* Recipe Card */
 .card {
-  box-shadow: 0 0 3px rgba(0,0,0,0.1)
+  box-shadow: 0 0 3px rgba(0,0,0,0.8)
 }
 
 .card h3 {
@@ -234,13 +234,14 @@ nav a:hover, nav button:hover {
 }
 
 /* Updated Styles for Recipe List */
+
+
 strong {
   font-weight: bold;
 }
 
 li {
   margin-bottom: 1rem;
-  border: 1px solid red;
   line-height: 1.7;
   text-align: center;
 }
