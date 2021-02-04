@@ -23,7 +23,7 @@ const NewUserForm = (props) => {
       .post('https://bw-tt32-secret-family-recipes.herokuapp.com/api/auth/register', formData)
       .then(res => {
         setFormData(initialFormData)
-        props.history.push('/')
+        props.history.push('/success')
       })
       .catch(err => {
         console.log(err)

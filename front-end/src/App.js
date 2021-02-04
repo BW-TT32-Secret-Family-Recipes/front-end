@@ -7,6 +7,7 @@ import RecipeForm from './components/RecipeForm'
 import NewUserForm from './components/NewUserForm'
 import EditRecipe from './components/EditRecipe'
 import LoginForm from './components/LoginForm'
+import OnSuccess from './components/OnSuccess'
 
 const App = () => {
   return (
@@ -15,10 +16,11 @@ const App = () => {
 
       <Route exact path='/' component={Home} />
       <PrivateRoute exact path='/:userId/recipes' component={RecipeList} />
-      <PrivateRoute path='/:userId/recipes/:recipeId/edit-recipe' component={EditRecipe}/>
+      <PrivateRoute path='/:userId/recipes/:recipeId/edit-recipe' component={EditRecipe} />
       <PrivateRoute path='/:userId/add-recipe' component={RecipeForm} />
       <Route path='/new-user' component={NewUserForm} />
       <Route path='/login' component={LoginForm} />
+      <Route path='/success' component={OnSuccess} />
 
     </>
   )
