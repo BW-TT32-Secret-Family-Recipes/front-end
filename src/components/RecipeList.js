@@ -72,14 +72,12 @@ const RecipeList = (props) => {
                   <button onClick={() => {
                     deleteRecipe(recipe)
                   }}>Delete Recipe</button>
-                                <CopyToClipboard onCopy={()=> shareRecipe(recipe)} text={`http://localhost:3000/recipes/${recipe.id}`}>
-                <button>Share Recipe</button>
-              </CopyToClipboard>
-              {/* <button onClick={()=> shareRecipe(recipe)
-              }>Share Recipe</button> */}
-              <span className={copyMessage.status && recipe.id === copyMessage.recipe_id ? 'share-message' : 'share-message hidden'}>
-                  link copied to clipboard!
-              </span>
+                  <CopyToClipboard onCopy={()=> shareRecipe(recipe)} text={`http://localhost:3000/recipes/${recipe.id}`}>
+                    <button>Share Recipe</button>
+                  </CopyToClipboard>
+                  <span className={copyMessage.status && recipe.id === copyMessage.recipe_id ? 'share-message' : 'share-message hidden'}>
+                    link copied to clipboard!
+                  </span>
                 </div>
                 <li key={recipe.id}>
                   <h4><strong>{recipe.title}</strong></h4>

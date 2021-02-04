@@ -1,6 +1,7 @@
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
 export const SET_ID = 'SET_ID'
+export const SET_URL = 'SET_URL'
 
 
 export const login = () => {
@@ -12,5 +13,9 @@ export const logout = () => {
 }
 
 export const setId = (userId) => {
-    return ({type: SET_ID, payload:userId})
+    return ({type: SET_ID, payload: userId})
+}
+
+export const setUrl = (url) => {
+    return ({type: SET_URL, payload: url})
 }
