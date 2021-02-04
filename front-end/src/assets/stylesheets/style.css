@@ -388,3 +388,53 @@ margin: 24px auto;
 .Search input:focus {
   outline: none;
 }
+
+/* Success Page */
+.success {
+  height: 100vh;
+  background-image: url(on_success.png);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-box {
+  position: relative;
+  bottom: 1.8rem;
+  color: #636363;
+  width: 350px;
+  height: 350px;
+  background-color: white;
+  border-radius: 11px;
+  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.9); */
+}
+
+.check {
+  display: flex;
+  justify-content: center;
+}
+
+.check i {
+  font-size: 58px;
+  background-color: #82ce34;
+  color: white;
+  border-radius: 50%;
+  padding: 1rem;
+  position: relative;
+  bottom: 40px;
+}
+
+.success-box h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.success-box p {
+  margin: 1.5rem 2rem;
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 1.3;
+}
