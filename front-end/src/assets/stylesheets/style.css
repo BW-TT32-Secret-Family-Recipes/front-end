@@ -232,6 +232,9 @@ nav a:hover, nav button:hover {
   border-bottom: 2px solid #ccc;
   align-items: center;
 }
+.recipe .hidden {
+  display: none;
+}
 
 /* Updated Styles for Recipe List */
 strong {

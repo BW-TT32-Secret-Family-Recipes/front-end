@@ -4,12 +4,14 @@ import React, { useState, useEffect } from 'react'
 import Search from './Search';
 import axiosWithAuth from '../utils/axiosWithAuth'
 import { Link } from 'react-router-dom';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const RecipeList = (props) => {
   const [recipes, setRecipes] = useState([])
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
   const [refresh, setRefresh] = useState([])
   const [isFetching, setIsFetching] = useState(false);
+  const [copyMessage, setCopyMessage] = useState({status: false, recipe_id: ''})
 
   const userId = localStorage.getItem('currentUserId')
   useEffect(() => {
@@ -17,12 +19,8 @@ const RecipeList = (props) => {
     axiosWithAuth()
       .get(`https://bw-tt32-secret-family-recipes.herokuapp.com/api/users/${userId}/recipes`)
       .then(res => {
-        let newArr = [];
-        Array.isArray(res.data)
-          ? newArr = res.data
-          : newArr = [res.data]
-        setRecipes(newArr);
-        setFilteredRecipes(newArr);
+        setRecipes(res.data);
+        setFilteredRecipes(res.data);
         setIsFetching(false);
       })
       .catch(err => {
@@ -47,6 +45,12 @@ const RecipeList = (props) => {
       })
   }
 
+  const shareRecipe = (recipe) => {
+    console.log(recipe)
+    setCopyMessage({status: true, recipe_id: recipe.id});
+    setTimeout(() => setCopyMessage({status: false, recipe_id: ''}), 3000);
+  }
+
   return (
     <div className='recipe-container'>
       <h2>Recipes</h2>
@@ -65,9 +69,24 @@ const RecipeList = (props) => {
               <button onClick={()=> {
                 deleteRecipe(recipe)
               }}>Delete Recipe</button>
+              <CopyToClipboard onCopy={()=> shareRecipe(recipe)} text={`http://localhost:3000/recipes/${recipe.id}`}>
+                <button>Share Recipe</button>
+              </CopyToClipboard>
+              {/* <button onClick={()=> shareRecipe(recipe)
+              }>Share Recipe</button> */}
+              <span className={copyMessage.status && recipe.id === copyMessage.recipe_id ? 'share-message' : 'share-message hidden'}>
+                  link copied to clipboard!
+              </span>
               <li key={recipe.id}>
-                <h4><strong>{recipe.title}</strong></h4>
-                <strong>Directions: </strong>{recipe.instructions}
+                <h4>
+                  <strong>
+                    {recipe.title}
+                  </strong>
+                </h4>
+                <strong>
+                  Directions: 
+                </strong>
+                {recipe.instructions}
               </li>
             </div>
           )
