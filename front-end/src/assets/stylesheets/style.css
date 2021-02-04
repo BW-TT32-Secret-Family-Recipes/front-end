@@ -234,7 +234,25 @@ nav a:hover, nav button:hover {
 }
 
 /* Updated Styles for Recipe List */
+.recipe button {
+  color: #F2A22C; 
+  background-color: #3A3A3A;
+  padding: .65rem;
+  border-radius: 20px;
+  letter-spacing: .1em;
+  font-size: .9rem;
+}
 
+.recipe button:hover {
+  background-color: #F2A22C;
+  color: #3A3A3A;
+  font-weight: bold;
+}
+
+.card-button {
+  display: flex;
+  justify-content: space-between;
+}
 
 strong {
   font-weight: bold;

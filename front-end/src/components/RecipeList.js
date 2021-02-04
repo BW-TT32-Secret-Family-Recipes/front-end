@@ -61,12 +61,14 @@ const RecipeList = (props) => {
           {filteredRecipes.map(recipe => {
             return (
               <div className='recipe' key={recipe.id}>
-                <button onClick={() => {
-                  routeToEdit(recipe)
-                }}>  Edit Recipe</button>
-                <button onClick={() => {
-                  deleteRecipe(recipe)
-                }}>Delete Recipe</button>
+                <div className='card-button'>
+                  <button onClick={() => {
+                    routeToEdit(recipe)
+                  }}>  Edit Recipe</button>
+                  <button onClick={() => {
+                    deleteRecipe(recipe)
+                  }}>Delete Recipe</button>
+                </div>
                 <li key={recipe.id}>
                   <h4><strong>{recipe.title}</strong></h4>
 
