@@ -105,21 +105,12 @@ const EditRecipe = ({ history }) => {
                 <input 
                     required
                     name='category_name'
-<<<<<<< HEAD:src/components/EditRecipe.js
                     list='categoryList'
                     onChange={handleChanges}
                     value={formData.category_name}
                 />
                 <datalist id='categoryList'>
                     {categories.map(category => <option value={category} />)}
-=======
-                    list='categorylist'
-                    onChange={handleChanges}
-                    value={formData.category_name}
-                />
-                <datalist id='categorylist'>
-                    {categories.map(category => <option value={category}/>)}
->>>>>>> cc8b6bfe1659d11193855b17ce5c4308e4e53a8d:front-end/src/components/EditRecipe.js
                 </datalist>
             </label>
             <div className='formItem' key='6'>
