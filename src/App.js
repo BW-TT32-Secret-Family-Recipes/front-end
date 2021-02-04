@@ -7,11 +7,8 @@ import RecipeForm from './components/RecipeForm'
 import NewUserForm from './components/NewUserForm'
 import EditRecipe from './components/EditRecipe'
 import LoginForm from './components/LoginForm'
-<<<<<<< HEAD:front-end/src/App.js
 import SharedRecipe from './components/SharedRecipe'
-=======
 import OnSuccess from './components/OnSuccess'
->>>>>>> 3ea1d8fe1a33dd478467dbeccf24104c633bb18b:src/App.js
 
 const App = () => {
   return (
@@ -24,12 +21,9 @@ const App = () => {
       <PrivateRoute path='/:userId/add-recipe' component={RecipeForm} />
       <Route path='/new-user' component={NewUserForm} />
       <Route path='/login' component={LoginForm} />
-<<<<<<< HEAD:front-end/src/App.js
       <Route path='/recipes/:recipeId' component={SharedRecipe}/>
-=======
       <Route path='/success' component={OnSuccess} />
 
->>>>>>> 3ea1d8fe1a33dd478467dbeccf24104c633bb18b:src/App.js
     </>
   )
 }
