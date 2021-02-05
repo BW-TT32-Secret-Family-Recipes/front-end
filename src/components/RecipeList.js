@@ -60,35 +60,38 @@ const RecipeList = (props) => {
         setFilteredRecipes={setFilteredRecipes}
       />
 
-      <div className='card'>
+      <div className='cards'>
         <ul>
           {filteredRecipes.map(recipe => {
             return (
               <div className='recipe' key={recipe.id}>
-                <div className='card-button'>
+                <div className='card-button-top'>
+                  <span className={copyMessage.status && recipe.id === copyMessage.recipe_id ? 'share-message' : 'share-message hidden'}>
+                    link copied to clipboard!
+                  </span>
+                  <CopyToClipboard onCopy={()=> shareRecipe(recipe)} text={`http://localhost:3000/recipes/${recipe.id}`}>
+                    <button>Share Recipe</button>
+                  </CopyToClipboard>
+                </div>
+                <li key={recipe.id}>
+                  <h4>{recipe.title}</h4>
+
+                  <strong>Ingredients: </strong>{recipe.ingredients}
+                  
+                  <br /><br /><strong>instructions: </strong>{recipe.instructions}
+                </li>
+                <div className='card-button-bottom'>
                   <button onClick={() => {
                     routeToEdit(recipe)
                   }}>  Edit Recipe</button>
                   <button onClick={() => {
                     deleteRecipe(recipe)
                   }}>Delete Recipe</button>
-                  <CopyToClipboard onCopy={()=> shareRecipe(recipe)} text={`http://localhost:3000/recipes/${recipe.id}`}>
-                    <button>Share Recipe</button>
-                  </CopyToClipboard>
-                  <span className={copyMessage.status && recipe.id === copyMessage.recipe_id ? 'share-message' : 'share-message hidden'}>
-                    link copied to clipboard!
-                  </span>
                 </div>
-                <li key={recipe.id}>
-                  <h4><strong>{recipe.title}</strong></h4>
-
-                  <strong>Directions: </strong>{recipe.instructions}
-
-                  <br /><br /><strong>Ingredients: </strong>{recipe.ingredients}
-                </li>
               </div>
             )
           })}
+          
         </ul>
       </div>
 
