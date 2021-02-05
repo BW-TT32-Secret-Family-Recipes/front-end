@@ -23,26 +23,29 @@ function SharedRecipe(props) {
 
   return (
     <div className='SharedRecipe'>
-      <h1>Recipe Details</h1>
-      <h3>Shared by {recipe.username}</h3>
-      <div className='recipeCard'>
-        <h2>{recipe.title}</h2>
-        <p>Category: {recipe.category_name}</p>
-        <p>Source: {recipe.source_name}</p>
-        <p>Ingredients: {recipe.ingredients}</p>
-        <p>Instructions: {recipe.instructions}</p>
-      </div>
-      {loggedIn
-      ? <div>
-          Like this recipe?
-          <button>Add to your cookbook</button>
+      <div className='container'>
+        <h1>Recipe Details</h1>
+        <h3>Shared by <span>{recipe.username}</span></h3>
+        <div className='recipeCard'>
+          <h2>{recipe.title}</h2>
+          <p><span>Category:</span> {recipe.category_name}</p>
+          <p><span>Source:</span> {recipe.source_name}</p>
+          <p><span>Ingredients:</span> {recipe.ingredients}</p>
+          <p><span>Instructions:</span> {recipe.instructions}</p>
         </div>
-      : <div>
-        Start your own online cookbook today! 
-        <button>Sign up</button>
-      </div>
-      }
+        {loggedIn
+        ? <div className='cta'>
+            Like this recipe?
+            <div className='cta-btn'>Add to your cookbook</div>
+          </div>
+        : <div className='cta'>
+          Start your own online cookbook today! 
+          <div className='cta-btn'>Sign up</div>
+        </div>
+        
+        }
 
+    </div>
     </div>
   )
 }

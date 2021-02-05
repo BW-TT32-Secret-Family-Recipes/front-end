@@ -48,7 +48,7 @@ const RecipeList = (props) => {
   }
 
   const shareRecipe = (recipe) => {
-    console.log(recipe)
+    // console.log(recipe)
     setCopyMessage({status: true, recipe_id: recipe.id});
     setTimeout(() => setCopyMessage({status: false, recipe_id: ''}), 3000);
   }

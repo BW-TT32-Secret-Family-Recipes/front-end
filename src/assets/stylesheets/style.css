@@ -456,3 +456,76 @@ margin: 24px auto;
 .success a:hover {
   background-color: #666666;
 }
+
+/* Shared Recipe */
+.SharedRecipe {
+  min-height: 100vh;
+  margin-top: -66px;
+  color: #3a3a3a;
+  background-image: url(../images/criss-cross.png);
+  /* background-size: cover; */
+  background-position: center center;
+  /* background-repeat: no-repeat; */
+  background-attachment: fixed;
+
+}
+.SharedRecipe .container {
+  width: 1200px;
+  max-width: 90%;
+  margin: 0 auto;
+  padding-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.SharedRecipe h1 {
+  font-size: 36px;
+  color: #F2A22C;
+  text-align: center;
+  padding: 3rem 0 1rem 0;
+}
+.SharedRecipe h3 {
+  font-size: 20px;
+  font-style: italic;
+  text-align: center;
+}
+.SharedRecipe h3 span {
+  color: #666666;
+}
+.SharedRecipe .recipeCard {
+  box-shadow: 5px 5px 10px;
+  padding: 2rem;
+  margin: 2rem 0;
+  background-color: white;
+}
+.SharedRecipe h2 {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.SharedRecipe p {
+  margin: 1rem 0;
+  line-height: 2;
+}
+.SharedRecipe span {
+  font-weight: bold;
+}
+.SharedRecipe .cta {
+  font-size: 20px;
+}
+.SharedRecipe .cta-btn {
+  text-transform: uppercase;
+  color: white;
+  font-size: 1.3rem;
+  text-decoration: none;
+  padding: .5rem;
+  background-color: #3a3a3a;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: .5rem;
+}
+.SharedRecipe .cta-btn:hover {
+  background-color: #F2A22C;
+  color: #3A3A3A
+}
