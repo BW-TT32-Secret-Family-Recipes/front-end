@@ -8,7 +8,7 @@ const OnSuccess = () => {
       <div className='success-box'>
 
         <div className='check'>
-          <i class="fas fa-check"></i>
+          <i className="fas fa-check"></i>
         </div>
 
         <h2>Success!</h2>

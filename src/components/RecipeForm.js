@@ -62,7 +62,7 @@ const RecipeForm = (props) => {
                     onChange={handleChange}
                 />
                 <datalist id='categoryList'>
-                    {categories.map(category => <option value={category} />)}
+                    {categories.map(category => <option key={category} value={category} />)}
                 </datalist>
             </label>
             <div className='formItem' key='6'>

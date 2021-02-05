@@ -2,8 +2,11 @@ import React from 'react';
 import family from '../assets/images/family-cooking.jpg';
 import recipeCard from '../assets/images/recipe-card.jpg';
 import logo from '../assets/images/logo.png';
+// import { setUrl } from '../actions/index';
+// import { connect } from 'react-redux';
 
 const Home = () => {
+
   return (
     <div className='home'>
       <section id='left-side'>
@@ -35,4 +38,10 @@ const Home = () => {
   )
 }
 
-export default Home
+// const mapStateToProps = (state) => {
+//   return {
+//     state: state
+//   }
+// }
+
+export default Home;

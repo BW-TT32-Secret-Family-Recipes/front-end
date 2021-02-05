@@ -17,5 +17,6 @@ export const setId = (userId) => {
 }
 
 export const setUrl = (url) => {
+    console.log(`hi, Im in the action, url is ${url}`)
     return ({type: SET_URL, payload: url})
 }

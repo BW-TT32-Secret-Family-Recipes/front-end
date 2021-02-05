@@ -14,6 +14,8 @@ const RecipeList = (props) => {
   const [copyMessage, setCopyMessage] = useState({status: false, recipe_id: ''})
 
   const userId = localStorage.getItem('currentUserId')
+  const baseUrl = window.location.origin;
+
   useEffect(() => {
     setIsFetching(true);
     axiosWithAuth()
@@ -60,27 +62,13 @@ const RecipeList = (props) => {
         setFilteredRecipes={setFilteredRecipes}
       />
 
-      <div className='cards'>
+      <div className='card'>
         <ul>
           {filteredRecipes.map(recipe => {
             return (
               <div className='recipe' key={recipe.id}>
-                <div className='card-button-top'>
-                  <span className={copyMessage.status && recipe.id === copyMessage.recipe_id ? 'share-message' : 'share-message hidden'}>
-                    link copied to clipboard!
-                  </span>
-                  <CopyToClipboard onCopy={()=> shareRecipe(recipe)} text={`http://localhost:3000/recipes/${recipe.id}`}>
-                    <button>Share Recipe</button>
-                  </CopyToClipboard>
-                </div>
-                <li key={recipe.id}>
-                  <h4>{recipe.title}</h4>
 
-                  <strong>Ingredients: </strong>{recipe.ingredients}
-                  
-                  <br /><br /><strong>instructions: </strong>{recipe.instructions}
-                </li>
-                <div className='card-button-bottom'>
+                <div className='card-button'>
                   <button onClick={() => {
                     routeToEdit(recipe)
                   }}>  Edit Recipe</button>
@@ -88,10 +76,32 @@ const RecipeList = (props) => {
                     deleteRecipe(recipe)
                   }}>Delete Recipe</button>
                 </div>
+
+                <li key={recipe.id}>
+                  <h4><strong>{recipe.title}</strong></h4>
+
+                  <strong>Directions: </strong>{recipe.instructions}
+
+                  <br /><br /><strong>Ingredients: </strong>{recipe.ingredients}
+                </li>
+
+                <CopyToClipboard
+                  onCopy={()=> shareRecipe(recipe)}
+                  text={`${baseUrl}/recipes/${recipe.id}`}
+                >
+                  <button>Share Recipe</button>
+                </CopyToClipboard>
+
+                <span className={
+                  copyMessage.status && recipe.id === copyMessage.recipe_id 
+                    ? 'share-message' 
+                    : 'share-message hidden'}>
+                  link copied to clipboard!
+                </span>
+
               </div>
             )
           })}
-          
         </ul>
       </div>
 
