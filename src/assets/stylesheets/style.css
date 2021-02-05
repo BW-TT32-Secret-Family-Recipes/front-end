@@ -186,6 +186,11 @@ nav a:hover, nav button:hover {
 }
 
 /* Recipes */
+.recipe {
+  padding: .5rem;
+  border-bottom: 1px solid #dddddd;
+  color: #3A3A3A;
+}
 .recipe-container h2 {
   text-align: center;
   font-weight: bold;
@@ -202,9 +207,13 @@ nav a:hover, nav button:hover {
   margin: 1rem;
 }
 
+.recipe p {
+  margin: .7rem 0;
+}
+
 /* Recipe Card */
 .card {
-  box-shadow: 0 0 3px rgba(0,0,0,0.8)
+  box-shadow: 0 0 3px rgba(0,0,0,0.8);
 }
 
 .card h3 {
@@ -251,17 +260,21 @@ nav a:hover, nav button:hover {
   color: #3A3A3A;
   font-weight: bold;
 }
+.recipe button:focus {
+  outline: none;
+}
 
 .card-button {
   display: flex;
   justify-content: space-between;
 }
 
-strong {
+.recipe strong {
   font-weight: bold;
+  line-height: 1.5;
 }
 
-li {
+.recipe li {
   margin-bottom: 1rem;
   line-height: 1.7;
   text-align: center;

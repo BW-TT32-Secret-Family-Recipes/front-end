@@ -80,9 +80,10 @@ const RecipeList = (props) => {
                 <li key={recipe.id}>
                   <h4><strong>{recipe.title}</strong></h4>
 
-                  <strong>Directions: </strong>{recipe.instructions}
-
-                  <br /><br /><strong>Ingredients: </strong>{recipe.ingredients}
+                  <p><strong>Directions: </strong>{recipe.instructions}</p>
+                  <p><strong>Ingredients: </strong>{recipe.ingredients}</p>
+                  <p><strong>Category: </strong>{recipe.category_name}</p>
+                  <p><strong>Source: </strong>{recipe.source_name}</p>
                 </li>
 
                 <CopyToClipboard
