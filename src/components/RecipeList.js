@@ -108,17 +108,17 @@ const RecipeList = (props) => {
 
       {
         filteredRecipes.length === 0 && recipes.length > 0
-          ? <div>No results. Reset your filters to see some delicious recipes!</div>
+          ? <div className='status-message'>No results. Reset your filters to see some delicious recipes!</div>
           : ''
       }
       {
         filteredRecipes.length === 0 && recipes.length === 0 && !isFetching
-          ? <div><Link to={`/${userId}/add-recipe`}>Add some recipes!</Link></div>
+          ? <div className='status-message'>You haven't added any recipes yet.<br /><Link to={`/${userId}/add-recipe`}>Get started!</Link></div>
           : ''
       }
       {
         isFetching === true
-          ? <div>Loading...</div>
+          ? <div className='status-message'>Loading...</div>
           : ''
       }
     </div>

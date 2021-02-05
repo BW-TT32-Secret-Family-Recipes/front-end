@@ -282,13 +282,37 @@ nav a:hover, nav button:hover {
 
 .recipe-container {
   width: 600px;
+  max-width: 90%;
   margin: 0 auto;
 }
 
-h4 {
+.recipe h4 {
   font-size: 1.3rem;
 }
 
+.recipe-container .status-message {
+  /* font-size: 1.2rem; */
+  color: #666666;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.recipe-container .status-message a {
+  color: white;
+  font-size: 1.3rem;
+  text-decoration: none;
+  padding: .5rem;
+  background-color: #666;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: .5rem;
+}
+
+.recipe-container .status-message a:hover {
+  background-color: #F2A22C;
+  color: #3A3A3A
+}
 /* Forms */
 
 .addForm {
