@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const OnSuccess = () => {
   return (
@@ -7,11 +8,12 @@ const OnSuccess = () => {
       <div className='success-box'>
 
         <div className='check'>
-          <i class="fas fa-check"></i>
+          <i className="fas fa-check"></i>
         </div>
 
         <h2>Success!</h2>
         <p>Your account has been successfully created, thanks!</p>
+        <Link to='/login'>Log in</Link>
       </div>
 
     </div>

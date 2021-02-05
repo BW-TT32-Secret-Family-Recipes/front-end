@@ -110,7 +110,7 @@ const EditRecipe = ({ history }) => {
                     value={formData.category_name}
                 />
                 <datalist id='categoryList'>
-                    {categories.map(category => <option value={category} />)}
+                    {categories.map(category => <option value={category} key={category} />)}
                 </datalist>
             </label>
             <div className='formItem' key='6'>
